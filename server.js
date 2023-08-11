@@ -3,6 +3,7 @@ const serverConfig = require('./config/server.config.js')
 const mongoose = require('mongoose');
 const dbConfig = require('./config/db.config.js')
 const userModel = require('./models/user.model.js')
+const bcrpyt = require('bcrypt');
 
 const app = express();
 
@@ -39,7 +40,7 @@ async function  init(){
         userId: 'admin',
         email: 'kankvish@gmail.com',
         userType: 'ADMIN',
-        password: 'welcome1'
+        password: bcrpyt.hashSync('welcome1',8)
     });
     console.log(admin);
 }
